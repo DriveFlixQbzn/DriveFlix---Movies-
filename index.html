@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DriveFlix Movies Official</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #ff0000, #7a00ff);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-buttons button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.nav-buttons button:hover {
+  background: white;
+  color: #ff0000;
+  transform: scale(1.05);
+}
+
+/* Main Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(122, 0, 255, 0.2));
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  margin-bottom: 50px;
+  border: 2px solid rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ff0000, #7a00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #ff0000, #cc0000);
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 0, 0, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ff0000;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #ff0000;
+  transform: translateY(-3px);
+}
+
+/* Search and Filter */
+.search-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 2px solid #ff0000;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+}
+
+.search-box::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.filter-select {
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 2px solid #ff0000;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.filter-select option {
+  background: #1a1a1a;
+  color: white;
+}
+
+/* Movies Grid */
+.movies-section h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #ff0000, #7a00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.movie-card {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(122, 0, 255, 0.1));
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.movie-card:hover {
+  transform: translateY(-10px);
+  border-color: #ff0000;
+  box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #ff0000, #7a00ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.movie-info {
+  padding: 20px;
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff0000;
+}
+
+.movie-year {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.movie-rating {
+  color: #ffd700;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.movie-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-watch {
+  flex: 1;
+  background: #ff0000;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-watch:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+.btn-favorite {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ff0000;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.btn-favorite:hover {
+  background: #ff0000;
+  color: white;
+}
+
+/* Player Modal */
+.player-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-modal.active {
+  display: flex;
+}
+
+.player-container {
+  width: 90%;
+  max-width: 1000px;
+  background: #000;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+}
+
+.video-player {
+  width: 100%;
+  height: 600px;
+  background: #000;
+}
+
+.player-info {
+  padding: 20px;
+  background: #1a1a1a;
+}
+
+.player-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #ff0000;
+}
+
+.player-info p {
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.close-player {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff0000;
+  border: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-player:hover {
+  background: #cc0000;
+  transform: scale(1.1);
+}
+
+/* Upload Section */
+.upload-section {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(122, 0, 255, 0.1));
+  border-radius: 15px;
+  padding: 40px;
+  border: 2px dashed #ff0000;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.upload-section h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ff0000;
+}
+
+.upload-area {
+  border: 2px dashed #ff0000;
+  border-radius: 10px;
+  padding: 40px;
+  background: rgba(255, 0, 0, 0.05);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  background: rgba(255, 0, 0, 0.1);
+  border-color: #7a00ff;
+}
+
+.upload-area p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+#csvFile {
+  display: none;
+}
+
+/* Footer */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 2px solid #ff0000;
+  padding: 30px;
+  text-align: center;
+  opacity: 0.8;
+  margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .movie-poster {
+    height: 200px;
+    font-size: 40px;
+  }
+
+  .search-section {
+    flex-direction: column;
+  }
+
+  .search-box,
+  .filter-select {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movie-card {
+  animation: slideIn 0.5s ease-out;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">🎬 DriveFlix Movies Official</div>
+  <div class="nav-buttons">
+    <button onclick="showSection('home')">בית</button>
+    <button onclick="showSection('favorites')">אהובים</button>
+    <button onclick="showSection('upload')">העלאה</button>
+    <button onclick="showSection('about')">אודות</button>
+  </div>
+</header>
+
+<!-- Main Container -->
+<div class="container">
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>🎥 ברוכים הבאים ל-DriveFlix Movies Official</h1>
+    <p>צפו בסרטים בחינם ישירות מ-Google Drive</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="document.querySelector('.search-box').focus()">🔍 חפשו סרט</button>
+      <button class="btn-secondary" onclick="showSection('upload')">📤 העלו סרט</button>
+    </div>
+  </div>
+
+  <!-- Search and Filter -->
+  <div class="search-section">
+    <input type="text" class="search-box" id="searchBox" placeholder="חפשו סרט..." onkeyup="filterMovies()">
+    <select class="filter-select" id="genreFilter" onchange="filterMovies()">
+      <option value="">כל הז'אנרים</option>
+      <option value="action">אקשן</option>
+      <option value="drama">דרמה</option>
+      <option value="comedy">קומדיה</option>
+      <option value="horror">אימה</option>
+      <option value="scifi">מדע בדיוני</option>
+      <option value="romance">רומנטיקה</option>
+      <option value="kids">ילדים</option>
+    </select>
+  </div>
+
+  <!-- Movies Section -->
+  <div class="movies-section" id="homeSection">
+    <h2>🎬 סרטים פופולריים</h2>
+    <div class="movies-grid" id="moviesGrid">
+      <!-- Movies will be loaded here -->
+    </div>
+  </div>
+
+  <!-- Upload Section -->
+  <div id="uploadSection" style="display: none;">
+    <div class="upload-section">
+      <h3>📤 העלו סרטים דרך CSV</h3>
+      <div class="upload-area" onclick="document.getElementById('csvFile').click()">
+        <p>🎥 לחצו כאן או גררו קובץ CSV</p>
+        <p style="font-size: 12px; opacity: 0.6;">פורמט: שם סרט, קישור Google Drive, ז'אנר, שנה</p>
+      </div>
+      <input type="file" id="csvFile" accept=".csv" onchange="handleCSVUpload(event)">
+      <button class="btn-primary" onclick="uploadMovies()">📤 העלו סרטים</button>
+    </div>
+  </div>
+
+  <!-- Favorites Section -->
+  <div id="favoritesSection" style="display: none;">
+    <h2>❤️ הסרטים האהובים שלי</h2>
+    <div class="movies-grid" id="favoritesGrid">
+      <!-- Favorites will be loaded here -->
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div id="aboutSection" style="display: none;">
+    <div class="hero">
+      <h1>ℹ️ אודות DriveFlix</h1>
+      <p style="text-align: right; direction: rtl;">
+        DriveFlix Movies Official היא פלטפורמה חדשנית לצפייה בסרטים ישירות מ-Google Drive.<br>
+        אנו מציעים חוויית צפייה חלקה, בחינם, וללא הגבלות.<br>
+        <br>
+        <strong>תכונות:</strong><br>
+        ✅ צפייה ישירה מ-Google Drive<br>
+        ✅ העלאת סרטים דרך CSV<br>
+        ✅ מערכת אהובים<br>
+        ✅ חיפוש וסינון לפי ז'אנר<br>
+        ✅ ממשק מודרני וידידותי<br>
+        <br>
+        © 2026 DriveFlix Movies Official - כל הזכויות שמורות
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Player Modal -->
+<div class="player-modal" id="playerModal">
+  <button class="close-player" onclick="closePlayer()">✕</button>
+  <div class="player-container">
+    <iframe class="video-player" id="videoPlayer" allow="fullscreen" allowfullscreen></iframe>
+    <div class="player-info">
+      <h3 id="playerTitle">שם הסרט</h3>
+      <p id="playerDescription">תיאור הסרט</p>
+      <button class="btn-primary" onclick="downloadMovie()">📥 הורידו</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>🎬 DriveFlix Movies Official © 2026 | צפו בחינם, בכל זמן, בכל מקום</p>
+  <p style="font-size: 12px; margin-top: 10px;">כל הסרטים מאוחסנים ב-Google Drive | אנו לא אחראים לתוכן</p>
+</footer>
+
+<script>
+// Sample movies data
+let movies = [
+  {
+    id: 1,
+    title: "Fast X 2026",
+    genre: "action",
+    year: 2026,
+    rating: 8.5,
+    driveLink: "https://drive.google.com/file/d/example1/preview",
+    description: "אקשן מרגש עם מכוניות מהירות"
+  },
+  {
+    id: 2,
+    title: "Avatar 3",
+    genre: "scifi",
+    year: 2026,
+    rating: 9.0,
+    driveLink: "https://drive.google.com/file/d/example2/preview",
+    description: "הרפתקה מדע בדיוני בעולם פנדורה"
+  },
+  {
+    id: 3,
+    title: "The Comedy Show",
+    genre: "comedy",
+    year: 2026,
+    rating: 7.8,
+    driveLink: "https://drive.google.com/file/d/example3/preview",
+    description: "קומדיה משעשעת וחדשנית"
+  },
+  {
+    id: 4,
+    title: "Horror Night",
+    genre: "horror",
+    year: 2026,
+    rating: 8.2,
+    driveLink: "https://drive.google.com/file/d/example4/preview",
+    description: "סרט אימה רודף ומעוררי פחד"
+  },
+  {
+    id: 5,
+    title: "Love Story",
+    genre: "romance",
+    year: 2026,
+    rating: 8.0,
+    driveLink: "https://drive.google.com/file/d/example5/preview",
+    description: "סיפור אהבה נוגע לב"
+  },
+  {
+    id: 6,
+    title: "Kids Adventure",
+    genre: "kids",
+    year: 2026,
+    rating: 8.7,
+    driveLink: "https://drive.google.com/file/d/example6/preview",
+    description: "הרפתקה משפחתית לילדים"
+  }
+];
+
+let favorites = [];
+
+// Load movies on page load
+window.onload = function() {
+  renderMovies(movies);
+};
+
+// Render movies
+function renderMovies(moviesToRender) {
+  const grid = document.getElementById('moviesGrid');
+  grid.innerHTML = '';
+  
+  moviesToRender.forEach(movie => {
+    const card = document.createElement('div');
+    card.className = 'movie-card';
+    card.innerHTML = `
+      <div class="movie-poster">🎬</div>
+      <div class="movie-info">
+        <div class="movie-title">${movie.title}</div>
+        <div class="movie-year">${movie.year}</div>
+        <div class="movie-rating">⭐ ${movie.rating}/10</div>
+        <div class="movie-actions">
+          <button class="btn-watch" onclick="playMovie(${movie.id})">▶️ צפו</button>
+          <button class="btn-favorite" onclick="toggleFavorite(${movie.id})">❤️</button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Play movie
+function playMovie(movieId) {
+  const movie = movies.find(m => m.id === movieId);
+  if (movie) {
+    document.getElementById('playerTitle').textContent = movie.title;
+    document.getElementById('playerDescription').textContent = movie.description;
+    document.getElementById('videoPlayer').src = movie.driveLink;
+    document.getElementById('playerModal').classList.add('active');
+  }
+}
+
+// Close player
+function closePlayer() {
+  document.getElementById('playerModal').classList.remove('active');
+  document.getElementById('videoPlayer').src = '';
+}
+
+// Toggle favorite
+function toggleFavorite(movieId) {
+  const movie = movies.find(m => m.id === movieId);
+  const index = favorites.findIndex(f => f.id === movieId);
+  
+  if (index > -1) {
+    favorites.splice(index, 1);
+  } else {
+    favorites.push(movie);
+  }
+  
+  alert(index > -1 ? 'הוסר מאהובים' : 'נוסף לאהובים');
+}
+
+// Filter movies
+function filterMovies() {
+  const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+  const genre = document.getElementById('genreFilter').value;
+  
+  const filtered = movies.filter(movie => {
+    const matchesSearch = movie.title.toLowerCase().includes(searchTerm);
+    const matchesGenre = !genre || movie.genre === genre;
+    return matchesSearch && matchesGenre;
+  });
+  
+  renderMovies(filtered);
+}
+
+// Show section
+function showSection(section) {
+  document.getElementById('homeSection').style.display = section === 'home' ? 'block' : 'none';
+  document.getElementById('uploadSection').style.display = section === 'upload' ? 'block' : 'none';
+  document.getElementById('favoritesSection').style.display = section === 'favorites' ? 'block' : 'none';
+  document.getElementById('aboutSection').style.display = section === 'about' ? 'block' : 'none';
+  
+  if (section === 'favorites') {
+    renderFavorites();
+  }
+}
+
+// Render favorites
+function renderFavorites() {
+  const grid = document.getElementById('favoritesGrid');
+  grid.innerHTML = '';
+  
+  if (favorites.length === 0) {
+    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; opacity: 0.6;">אין סרטים אהובים עדיין</p>';
+    return;
+  }
+  
+  favorites.forEach(movie => {
+    const card = document.createElement('div');
+    card.className = 'movie-card';
+    card.innerHTML = `
+      <div class="movie-poster">🎬</div>
+      <div class="movie-info">
+        <div class="movie-title">${movie.title}</div>
+        <div class="movie-year">${movie.year}</div>
+        <div class="movie-rating">⭐ ${movie.rating}/10</div>
+        <div class="movie-actions">
+          <button class="btn-watch" onclick="playMovie(${movie.id})">▶️ צפו</button>
+          <button class="btn-favorite" onclick="toggleFavorite(${movie.id})">❌</button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Handle CSV upload
+function handleCSVUpload(event) {
+  const file = event.target.files[0];
+  if (file) {
+    alert(`קובץ נבחר: ${file.name}`);
+  }
+}
+
+// Upload movies
+function uploadMovies() {
+  alert('סרטים הועלו בהצלחה! 🎉');
+  document.getElementById('csvFile').value = '';
+}
+
+// Download movie
+function downloadMovie() {
+  alert('ההורדה החלה... 📥');
+}
+
+// Close player on Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closePlayer();
+  }
+});
+</script>
+
+</body>
+</html>

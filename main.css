@@ -1,0 +1,767 @@
+/* ===================================
+   DriveFlix Movies Official - Main CSS
+   =================================== */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   Header Styles
+   =================================== */
+
+header {
+  background: linear-gradient(90deg, #ff0000, #7a00ff);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-buttons button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.nav-buttons button:hover {
+  background: white;
+  color: #ff0000;
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+}
+
+.nav-buttons button:active {
+  transform: scale(0.98);
+}
+
+/* ===================================
+   Container Styles
+   =================================== */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+
+.hero {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(122, 0, 255, 0.2));
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  margin-bottom: 50px;
+  border: 2px solid rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ff0000, #7a00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideIn 0.8s ease-out;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+  animation: slideIn 0.8s ease-out 0.2s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: slideIn 0.8s ease-out 0.4s both;
+}
+
+/* ===================================
+   Button Styles
+   =================================== */
+
+.btn-primary {
+  background: linear-gradient(90deg, #ff0000, #cc0000);
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 0, 0, 0.6);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ff0000;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #ff0000;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+}
+
+.btn-secondary:active {
+  transform: translateY(-1px);
+}
+
+/* ===================================
+   Search and Filter Section
+   =================================== */
+
+.search-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  animation: slideIn 0.8s ease-out;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 2px solid #ff0000;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.search-box::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #7a00ff;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(122, 0, 255, 0.3);
+}
+
+.filter-select {
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 2px solid #ff0000;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.filter-select:hover {
+  border-color: #7a00ff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #7a00ff;
+  box-shadow: 0 0 20px rgba(122, 0, 255, 0.3);
+}
+
+.filter-select option {
+  background: #1a1a1a;
+  color: white;
+  padding: 10px;
+}
+
+/* ===================================
+   Movies Section
+   =================================== */
+
+.movies-section h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #ff0000, #7a00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideIn 0.8s ease-out;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.movie-card {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(122, 0, 255, 0.1));
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  animation: slideIn 0.5s ease-out;
+}
+
+.movie-card:hover {
+  transform: translateY(-10px);
+  border-color: #ff0000;
+  box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
+}
+
+.movie-card:active {
+  transform: translateY(-5px);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #ff0000, #7a00ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-poster::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  animation: shine 3s infinite;
+}
+
+.movie-info {
+  padding: 20px;
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff0000;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.movie-year {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.movie-rating {
+  color: #ffd700;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.movie-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-watch {
+  flex: 1;
+  background: #ff0000;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-watch:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+.btn-watch:active {
+  transform: scale(0.98);
+}
+
+.btn-favorite {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ff0000;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.btn-favorite:hover {
+  background: #ff0000;
+  color: white;
+  transform: scale(1.1);
+}
+
+.btn-favorite:active {
+  transform: scale(0.95);
+}
+
+/* ===================================
+   Player Modal
+   =================================== */
+
+.player-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.player-modal.active {
+  display: flex;
+}
+
+.player-container {
+  width: 90%;
+  max-width: 1000px;
+  background: #000;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+.video-player {
+  width: 100%;
+  height: 600px;
+  background: #000;
+}
+
+.player-info {
+  padding: 20px;
+  background: #1a1a1a;
+}
+
+.player-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #ff0000;
+}
+
+.player-info p {
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.close-player {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff0000;
+  border: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+}
+
+.close-player:hover {
+  background: #cc0000;
+  transform: scale(1.1);
+}
+
+.close-player:active {
+  transform: scale(0.95);
+}
+
+/* ===================================
+   Upload Section
+   =================================== */
+
+.upload-section {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(122, 0, 255, 0.1));
+  border-radius: 15px;
+  padding: 40px;
+  border: 2px dashed #ff0000;
+  text-align: center;
+  margin-bottom: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.upload-section h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ff0000;
+}
+
+.upload-area {
+  border: 2px dashed #ff0000;
+  border-radius: 10px;
+  padding: 40px;
+  background: rgba(255, 0, 0, 0.05);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  background: rgba(255, 0, 0, 0.1);
+  border-color: #7a00ff;
+  transform: scale(1.02);
+}
+
+.upload-area p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+#csvFile {
+  display: none;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 2px solid #ff0000;
+  padding: 30px;
+  text-align: center;
+  opacity: 0.8;
+  margin-top: 50px;
+  backdrop-filter: blur(10px);
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+/* ===================================
+   Animations
+   =================================== */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+@media (max-width: 1024px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .hero {
+    padding: 40px 30px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-buttons button {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 30px 20px;
+    margin-bottom: 30px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .movie-poster {
+    height: 200px;
+    font-size: 40px;
+  }
+
+  .search-section {
+    flex-direction: column;
+  }
+
+  .search-box,
+  .filter-select {
+    width: 100%;
+  }
+
+  .upload-section {
+    padding: 25px;
+  }
+
+  .player-container {
+    width: 95%;
+  }
+
+  .video-player {
+    height: 400px;
+  }
+
+  .close-player {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .container {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
+  }
+
+  .nav-buttons {
+    gap: 8px;
+  }
+
+  .nav-buttons button {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-size: 20px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .movie-poster {
+    height: 150px;
+    font-size: 30px;
+  }
+
+  .movie-info {
+    padding: 10px;
+  }
+
+  .movie-title {
+    font-size: 14px;
+  }
+
+  .movie-rating {
+    font-size: 14px;
+  }
+
+  .btn-watch,
+  .btn-favorite {
+    padding: 8px 5px;
+    font-size: 12px;
+  }
+
+  .video-player {
+    height: 250px;
+  }
+
+  .player-info h3 {
+    font-size: 18px;
+  }
+}
+
+/* ===================================
+   Scrollbar Styling
+   =================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ff0000, #7a00ff);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #cc0000, #6a00dd);
+}
+
+/* ===================================
+   Selection Styling
+   =================================== */
+
+::selection {
+  background: #ff0000;
+  color: white;
+}
+
+::-moz-selection {
+  background: #ff0000;
+  color: white;
+}
