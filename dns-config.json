@@ -1,0 +1,160 @@
+{
+  "domain": "driveflixqbzn.com",
+  "description": "DriveFlix Movies Official - Streaming Platform",
+  "dns_records": {
+    "option_1_a_records": {
+      "description": "Recommended for GitHub Pages",
+      "records": [
+        {
+          "type": "A",
+          "name": "@",
+          "value": "185.199.108.153",
+          "ttl": 3600,
+          "priority": null
+        },
+        {
+          "type": "A",
+          "name": "@",
+          "value": "185.199.109.153",
+          "ttl": 3600,
+          "priority": null
+        },
+        {
+          "type": "A",
+          "name": "@",
+          "value": "185.199.110.153",
+          "ttl": 3600,
+          "priority": null
+        },
+        {
+          "type": "A",
+          "name": "@",
+          "value": "185.199.111.153",
+          "ttl": 3600,
+          "priority": null
+        }
+      ]
+    },
+    "option_2_cname_record": {
+      "description": "For www subdomain",
+      "records": [
+        {
+          "type": "CNAME",
+          "name": "www",
+          "value": "YOUR_USERNAME.github.io",
+          "ttl": 3600,
+          "priority": null,
+          "note": "Replace YOUR_USERNAME with your GitHub username"
+        }
+      ]
+    },
+    "option_3_alias_record": {
+      "description": "If your DNS provider supports ALIAS",
+      "records": [
+        {
+          "type": "ALIAS",
+          "name": "@",
+          "value": "YOUR_USERNAME.github.io",
+          "ttl": 3600,
+          "priority": null,
+          "note": "Replace YOUR_USERNAME with your GitHub username"
+        }
+      ]
+    },
+    "optional_mx_records": {
+      "description": "For email (optional)",
+      "records": [
+        {
+          "type": "MX",
+          "name": "@",
+          "value": "mail.driveflixqbzn.com",
+          "ttl": 3600,
+          "priority": 10
+        }
+      ]
+    },
+    "optional_txt_records": {
+      "description": "For email verification (optional)",
+      "records": [
+        {
+          "type": "TXT",
+          "name": "@",
+          "value": "v=spf1 include:_spf.google.com ~all",
+          "ttl": 3600,
+          "priority": null,
+          "note": "SPF record for email authentication"
+        }
+      ]
+    }
+  },
+  "github_pages_config": {
+    "repository": "driveflix-movies",
+    "branch": "main",
+    "folder": "/",
+    "custom_domain": "driveflixqbzn.com",
+    "enforce_https": true,
+    "cname_file": "CNAME"
+  },
+  "verification_commands": {
+    "check_dns": [
+      "nslookup driveflixqbzn.com",
+      "dig driveflixqbzn.com",
+      "host driveflixqbzn.com"
+    ],
+    "check_dns_specific": [
+      "nslookup -type=A driveflixqbzn.com",
+      "dig A driveflixqbzn.com"
+    ]
+  },
+  "expected_dns_response": {
+    "type": "A",
+    "addresses": [
+      "185.199.108.153",
+      "185.199.109.153",
+      "185.199.110.153",
+      "185.199.111.153"
+    ]
+  },
+  "timeline": {
+    "dns_propagation": "24-48 hours",
+    "github_verification": "up to 1 hour",
+    "https_activation": "up to 24 hours"
+  },
+  "providers_supported": [
+    {
+      "name": "GoDaddy",
+      "url": "godaddy.com",
+      "difficulty": "easy"
+    },
+    {
+      "name": "Namecheap",
+      "url": "namecheap.com",
+      "difficulty": "easy"
+    },
+    {
+      "name": "Cloudflare",
+      "url": "cloudflare.com",
+      "difficulty": "medium"
+    },
+    {
+      "name": "1&1 / IONOS",
+      "url": "ionos.com",
+      "difficulty": "easy"
+    },
+    {
+      "name": "Google Domains",
+      "url": "domains.google.com",
+      "difficulty": "easy"
+    },
+    {
+      "name": "AWS Route 53",
+      "url": "aws.amazon.com",
+      "difficulty": "hard"
+    }
+  ],
+  "support": {
+    "email": "support@driveflixqbzn.com",
+    "github_pages_docs": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site",
+    "github_troubleshooting": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages"
+  }
+}
